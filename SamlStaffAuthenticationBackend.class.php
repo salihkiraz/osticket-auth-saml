@@ -69,6 +69,7 @@ class SamlStaffAuthenticationBackend extends ExternalStaffAuthenticationBackend
                 ),
                 'NameIDFormat' => 'urn:oasis:names:tc:SAML:2.0:nameid-format:transient'
             ),
+            "debug"=>$this->_config->get('debug'),
         );
 
         return new OneLogin_Saml2_Settings($settings);
@@ -182,6 +183,7 @@ class SamlUserAuthenticationBackend extends ExternalUserAuthenticationBackend
                 ),
                 'NameIDFormat' => 'urn:oasis:names:tc:SAML:2.0:nameid-format:transient'
             ),
+            "debug"=>$this->_config->get('debug'),
         );
 
         return new OneLogin_Saml2_Settings($settings);
