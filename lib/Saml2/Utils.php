@@ -57,7 +57,7 @@ class OneLogin_Saml2_Utils
             bindtextdomain("phptoolkit", dirname(dirname(__DIR__)).'/locale');
             textdomain('phptoolkit');
 
-            $translatedMsg = gettext($msg);
+            $translatedMsg = $msg;
         } else {
             $translatedMsg = $msg;
         }
