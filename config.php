@@ -114,6 +114,17 @@ class SamlAuthConfig extends PluginConfig {
                     'desc' => 'Enable authentication and discovery of clients'
                 )
             )),
+              'debug_help' => new SectionBreakField(array(
+                'label' => 'Debug Modes',
+                'hint' => 'Debug mode enable',
+            )),
+            'debug' => new BooleanField(array(
+                'label' => 'Debug',
+                'default' => false,
+                'configuration' => array(
+                    'desc' => 'Debug mode'
+                )
+            )),
         );
     }
 }
