@@ -4,7 +4,7 @@
 
 return array(
     'id' => 'auth:saml',
-    'version' => '1.0',
+    'version' => '1.2',
     'name' => 'SAML Authentication and Lookup',
     'author' => 'Salih KİRAZ salihk06@gmail.com',
     'description' => 'Provides an authentication backend for SAML identity providers.',
