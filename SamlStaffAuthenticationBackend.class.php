@@ -165,6 +165,8 @@ class SamlUserAuthenticationBackend extends ExternalUserAuthenticationBackend
 
     private function getSamlConfiguration()
     {
+        $url=(isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]";
+
         $settings = array(
             'idp' => array(
                 'entityId' => $this->_config->get('idp_entity_id'),
@@ -176,7 +178,7 @@ class SamlUserAuthenticationBackend extends ExternalUserAuthenticationBackend
             ),
 
             'sp' => array(
-                'entityId' => $this->_config->get('entity_id'),
+                'entityId' => (($this->_config->get('entity_id')=="") ? $url:$this->_config->get('entity_id')),
                 'assertionConsumerService' => array(
                     'url' => $this->_config->get('assertion_consumer_service_url'),
                     'binding' => 'urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST',
