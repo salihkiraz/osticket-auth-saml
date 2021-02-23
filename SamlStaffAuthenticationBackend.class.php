@@ -174,7 +174,7 @@ class SamlUserAuthenticationBackend extends ExternalUserAuthenticationBackend
                     'url' => $this->_config->get('idp_sso_target_url'),
                     'binding' => 'urn:oasis:names:tc:SAML:2.0:bindings:HTTP-Redirect',
                 ),
-                'x509cert' => $this->_config->get('idp_cert_fingerprint')
+                'x509cert' => $this->_config->get('idp_x509cert')
             ),
 
             'sp' => array(
