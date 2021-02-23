@@ -7,7 +7,7 @@ this reposity based https://code.tf/thefarm/osticket-auth-saml
 
 #versions support
 
-Osticket 1.12.x  and Osticket 1.14.x  ( Other verisons no tested)
+Osticket 1.12.x  and Osticket 1.14.x and 1.15.x ( Other verisons no tested)
 
 #Settings 
 
