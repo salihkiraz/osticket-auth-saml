@@ -53,6 +53,7 @@ class SamlAuthConfig extends PluginConfig {
                 array(
                     'id' => 'entity_id',
                     'label' => 'Service Provider Entity ID',
+                    'hint' => 'If left blank it will be detected automatically.',
                     'configuration' => array(
                         'size' => 59,
                         'length' => 255
