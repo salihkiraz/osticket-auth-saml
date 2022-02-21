@@ -1,8 +1,14 @@
+
+
 # osticket-auth-saml
 Osticket Saml Login Plugin
 
 
 this reposity based https://code.tf/thefarm/osticket-auth-saml
+
+The plugin is based on onelogin saml2. Please check your issue at the address below.
+
+https://github.com/onelogin/php-saml/issues
 
 
 #versions support
