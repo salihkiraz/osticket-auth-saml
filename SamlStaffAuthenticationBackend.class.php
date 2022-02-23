@@ -8,7 +8,6 @@ require_once 'lib/Saml2/Utils.php';
 require_once 'lib/Saml2/Response.php';
 require_once 'lib/Saml2/Constants.php';
 
-
 class SamlStaffAuthenticationBackend extends ExternalStaffAuthenticationBackend
 {
 
@@ -31,9 +30,9 @@ class SamlStaffAuthenticationBackend extends ExternalStaffAuthenticationBackend
                         $response = $self->getSamlResponse($_POST['SAMLResponse']);
 
                         if ($response->isValid()) {
-                            $_SESSION['saml']['nameId'] = $response->getNameId();
-                            $_SESSION['saml']['name'] = $response->getAttributes()["givenName"][0];
-                            $_SESSION['saml']['surname'] = $response->getAttributes()["sn"][0];
+                            $_SESSION['saml']['nameId'] = $this->getNameId($response); 
+                            $_SESSION['saml']['name'] = $response->getAttributes()[$this->_config->get("attribute_mapping_name")][0];
+                            $_SESSION['saml']['surname'] = $response->getAttributes()[$this->_config->get("attribute_mapping_surname")][0];
 
 
                             if ($_SESSION['saml']['type'] == "staff") {
@@ -47,6 +46,15 @@ class SamlStaffAuthenticationBackend extends ExternalStaffAuthenticationBackend
                 })
             );
         });
+    }
+
+    private function getNameId($response) {
+        $emailAttribute = $this->_config->get("attribute_mapping_email");
+        // If the field is empty, return the default NameID
+        if(trim($emailAttribute) === "") {
+            return $response->getNameId();
+        }
+        return $response->getAttributes()[$emailAttribute][0];
     }
 
     private function getSamlConfiguration()
@@ -150,7 +158,7 @@ class SamlUserAuthenticationBackend extends ExternalUserAuthenticationBackend
                         $response = $self->getSamlResponse($_POST['SAMLResponse']);
 
                         if ($response->isValid()) {
-                            $_SESSION['saml']['nameId'] = $response->getNameId();
+                            $_SESSION['saml']['nameId'] = $this->getNameId($response);
                             $_SESSION['saml']['name'] = $response->getAttributes()[$this->_config->get('attribute_mapping_name')][0];
                             $_SESSION['saml']['surname'] = $response->getAttributes()[$this->_config->get('attribute_mapping_surname')][0];
 
@@ -162,6 +170,14 @@ class SamlUserAuthenticationBackend extends ExternalUserAuthenticationBackend
         });
     }
 
+    private function getNameId($response) {
+        $emailAttribute = $this->_config->get("attribute_mapping_email");
+        // If the field is empty, return the default NameID
+        if(trim($emailAttribute) === "") {
+            return $response->getNameId();
+        }
+        return $response->getAttributes()[$emailAttribute][0];
+    }
 
     private function getSamlConfiguration()
     {

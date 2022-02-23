@@ -89,6 +89,14 @@ class SamlAuthConfig extends PluginConfig {
                     'desc' => 'Enable authentication and discovery of clients'
                 )
             )),
+            // Honestly adding this will help avoid trial and error when setting up this plugin.
+            'attribute_mapping_email' => new TextboxField(array(
+                'label' => 'Email',
+                'default' => "",
+                'configuration' => array(
+                    'desc' => 'leave empty to use the default NameID response from SAML'
+                )
+            )),
 
 
 
