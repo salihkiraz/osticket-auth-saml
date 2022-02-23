@@ -75,10 +75,12 @@ class SamlStaffAuthenticationBackend extends ExternalStaffAuthenticationBackend
                     'url' => $this->_config->get('assertion_consumer_service_url'),
                     'binding' => 'urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST',
                 ),
-                'NameIDFormat' => 'urn:oasis:names:tc:SAML:2.0:nameid-format:transient'
             ),
             "debug"=>$this->_config->get('debug'),
         );
+        if(trim($this->_config->get("attribute_mapping_email")) === "") {
+            $settings['sp']['NameIDFormat'] = 'urn:oasis:names:tc:SAML:2.0:nameid-format:transient';
+        }
 
         return new OneLogin_Saml2_Settings($settings);
     }
@@ -199,11 +201,12 @@ class SamlUserAuthenticationBackend extends ExternalUserAuthenticationBackend
                     'url' => $this->_config->get('assertion_consumer_service_url'),
                     'binding' => 'urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST',
                 ),
-                'NameIDFormat' => 'urn:oasis:names:tc:SAML:2.0:nameid-format:transient'
             ),
             "debug"=>$this->_config->get('debug'),
         );
-
+        if(trim($this->_config->get("attribute_mapping_email")) === "") {
+            $settings['sp']['NameIDFormat'] = 'urn:oasis:names:tc:SAML:2.0:nameid-format:transient';
+        }
         return new OneLogin_Saml2_Settings($settings);
     }
 
