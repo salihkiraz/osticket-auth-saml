@@ -38,7 +38,7 @@ class SamlStaffAuthenticationBackend extends ExternalStaffAuthenticationBackend
                             if ($_SESSION['saml']['type'] == "staff") {
                                 Http::redirect(ROOT_PATH . 'scp');
                             } else {
-                                Http::redirect(ROOT_PATH . 'open.php');
+                                Http::redirect(ROOT_PATH . 'login.php');
                             }
 
                         }
