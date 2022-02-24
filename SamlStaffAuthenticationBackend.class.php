@@ -68,7 +68,9 @@ class SamlStaffAuthenticationBackend extends ExternalStaffAuthenticationBackend
                 ),
                 'x509cert' => $this->_config->get('idp_x509cert')
             ),
-
+            'security' => array(
+                'requestedAuthnContext' => array('urn:oasis:names:tc:SAML:2.0:ac:classes:Password', 'urn:oasis:names:tc:SAML:2.0:ac:classes:X509'),
+            ),
             'sp' => array(
                 'entityId' => $this->_config->get('entity_id'),
                 'assertionConsumerService' => array(
@@ -194,7 +196,9 @@ class SamlUserAuthenticationBackend extends ExternalUserAuthenticationBackend
                 ),
                 'x509cert' => $this->_config->get('idp_x509cert')
             ),
-
+            'security' => array(
+                'requestedAuthnContext' => array('urn:oasis:names:tc:SAML:2.0:ac:classes:Password', 'urn:oasis:names:tc:SAML:2.0:ac:classes:X509'),
+            ),
             'sp' => array(
                 'entityId' => (($this->_config->get('entity_id')=="") ? $url:$this->_config->get('entity_id')),
                 'assertionConsumerService' => array(
