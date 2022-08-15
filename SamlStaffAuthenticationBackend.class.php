@@ -103,8 +103,7 @@ class SamlStaffAuthenticationBackend extends ExternalStaffAuthenticationBackend
             $staff_id = StaffSession::getIdByEmail($_SESSION['saml']['nameId']);
 
             if ($staff_id) {
-                if (method_exists(StaffSession, 'lookup')) {
-                    // Assholes
+                if (method_exists('StaffSession', 'lookup')) {
                     $staff_session = StaffSession::lookup($staff_id);
                 } else {
                     $staff_session = new StaffSession($staff_id);
